@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <app-page-header
+    [title]="data.title"
+    [subtitle]="data.subtitle"
+    [name]="data.name"
+  ></app-page-header>
+
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="mb-2 d-flex justify-content-between">
+        <div class="form-group">
+          <button
+            (click)="goToCreateUsuario()"
+            class="btn btn-primary waves-effect waves-light"
+          >
+            <i class="fas fa-plus-circle"></i>&nbsp; Nuevo Usuario
+          </button>
+        </div>
+      </div>
+
+      <div class="card-box">
+        <div class="d-flex justify-content-between mb-2">
+          <!-- Selector de cantidad de registros -->
+          <div class="d-flex align-items-center">
+            <span class="me-2">Mostrando</span>
+            <select class="form-control mx-1" (change)="changeLimit($event)">
+              <option value="10">10</option>
+              <option value="20">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            <span class="ms-2 text-nowrap">registros por página</span>
+          </div>
+
+          <!-- Campo de búsqueda -->
+          <div class="d-flex align-items-center">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Buscar..."
+              (input)="searchTable($event)"
+            />
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table id="table-usuarios" class="table table-hover mb-0 dts">
+            <thead class="bg-dark text-center text-white text-nowrap">
+              <tr style="cursor: pointer">
+                <th scope="col">ID</th>
+                <th scope="col">Nombre Completo</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Email</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let usuario of usuarios
+                    | paginate
+                      : {
+                          itemsPerPage: limit,
+                          currentPage: page
+                        };
+                  let i = index
+                "
+                class="text-nowrap text-center"
+              >
+                <th scope="row" class="align-middle">{{ usuario.userId }}</th>
+                <td class="align-middle">{{ usuario.fullname }}</td>
+                <td class="align-middle">{{ usuario.username }}</td>
+                <td class="align-middle">
+                  {{ usuario.telefono ? usuario.telefono : "-- Ninguno --" }}
+                </td>
+                <td class="align-middle">
+                  {{ usuario.email ? usuario.email : "-- Ninguno --" }}
+                </td>
+                <td class="align-middle text-nowrap">
+                  <div class="d-flex justify-content-center">
+                    <button
+                      href="#"
+                      title="Editar"
+                      class="btn btn-sm btn-primary mr-1"
+                      (click)="goToEditUsuario(usuario.userId!)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+
+                    <button
+                      type="button"
+                      title="Eliminar"
+                      class="btn btn-sm btn-danger"
+                      (click)="confirmarEliminarUsuario(usuario.userId!)"
+                    >
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngIf="usuarios.length === 0">
+                <td colspan="6" class="text-center">No se encontraron registros</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Paginación -->
+          <div *ngIf="usuarios.length > 0" class="d-flex justify-content-end mt-3">
+            <pagination-controls
+              class="custom-pagination"
+              (pageChange)="page = $event"
+              previousLabel="Anterior"
+              nextLabel="Siguiente"
+            ></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+:root {
+  --color1: #323A46;
+  --color2: #434b56;
+  --color3: #4a535f;
+  --color4: #56606e;
+  --color5: #5d6673;
+  
+  --color6: #3B434E;
+  
+  --color7: #adb5bd;
+  --color8: #DCDFE3;
+  --color9: #f7f7f7;
+  --color10: #ced4da;
+  --color11: #dee2e6;
+  --color12: #e1e9ee;
+  --color13: #F0F4F6;
+  
+  --color14: #4e5864;
+  --color15: #434C58;
+  --color16: #2F3642;
+}
+
+body {
+  background-color: var(--color1);
+  color: var(--color7);
+}
+
+.dropdown-menu, .left-side-menu {
+  box-shadow: none;
+}
+.navbar-custom .button-menu-mobile span {
+  background-color: var(--color8);
+}
+.navbar-custom .topnav-menu .nav-link, .table, .table-hover tbody tr:hover {
+  color: var(--color8);
+}
+
+.notification-list .notify-item .notify-details {
+  color: var(--color9);
+}
+.dropdown-item.active, .dropdown-item:active {
+  color: var(--color10);
+  background-color: var(--color3);
+}
+
+.dropdown-item:hover {
+  color: var(--color12);
+  background-color: var(--color3);
+}
+.notification-list .noti-title, .dropdown-menu {
+  background-color: var(--color2);
+}
+
+.page-title-box .page-title, .breadcrumb-item>a {
+  color: var(--color13);
+}
+.breadcrumb-item+.breadcrumb-item::before {
+  color: var(--color5);
+}
+.dropdown-item, .breadcrumb-item.active {
+  color: var(--color7);
+}
+
+.form-control, .form-control:focus {
+  background-color: var(--color2);
+  border-color: var(--color4);
+  color: var(--color11);
+}
+
+.form-group h3, .form-group i {
+  color: var(--color11);
+}
+
+.table th {
+  background-color: var(--color6);
+  /* color: var(--color8); */
+}
+.table-hover tbody tr:hover {
+  background-color: var(--color2);
+}
+
+.page-item .page-link {
+  color: var(--color8);
+  background-color: var(--color2);
+  border: 1px solid var(--color14);
+}
+
+.page-item.disabled .page-link {
+  color: var(--color11);
+  background-color: var(--color6);
+  border: 1px solid var(--color14);
+}
+.navbar-custom .app-search .form-control, .navbar-custom .app-search .btn {
+  background-color: var(--color15);
+  color: var(--color11);
+}
+
+.navbar-custom, .card-box {
+  background-color: var(--color6);
+}
+.text-right h3, .text-right h3 span {
+  color: var(--color11) !important;
+}
+.footer {
+  background-color: var(--color16);
+  color: var(--color8);
+}
+
+
+.right-bar .rightbar-title {
+  background-color: var(--color6) !important;
+  color: var(--color8);
+}
+.right-bar {
+  background-color: var(--color2);
+}
+
+.right-bar .user-box h5 a {
+  color: var(--color8);
+}
+
+#theme {
+  /* background-color: var(--color2); */
+  color: var(--color8) !important;
+  border: 1px solid var(--color8) !important;
+}
+#options-theme {
+  background-color: var(--color6);
+  color: var(--color8);
+}

@@ -1,0 +1,69 @@
+<!-- Right Sidebar -->
+<div class="right-bar">
+  <div class="rightbar-title bg-dark">
+    <a href="javascript:void(0);" class="right-bar-toggle float-right">
+      <i class="mdi mdi-close"></i>
+    </a>
+    <h5 class="m-0 text-white">Settings</h5>
+  </div>
+  <div class="slimscroll-menu">
+    <!-- User box -->
+    <div class="user-box">
+      <div class="user-img">
+        <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle img-fluid">
+        <a href="javascript:void(0);" class="user-edit"><i class="mdi mdi-pencil"></i></a>
+      </div>
+
+      <h5><a href="javascript: void(0);">
+        <!-- @php
+        $user = Auth::user();
+        if (Auth::check() && $user) {
+          $nombre = $user->nombre .' '. $user->apellido;
+          $email = $user->email;
+        } else {
+          $nombre = 'Admin';
+          $email = 'admin@gmail.com';
+        }
+        @endphp
+          {{ $nombre }} -->
+      </a></h5>
+      <p class="text-muted mb-0"><small> example&#64;gmail.com </small></p>
+    </div>
+
+
+    <hr class="mb-0" />
+
+    <div class="p-3">
+      <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+        <li class="dropdown d-lg-block">
+          <a class="nav-link dropdown-toggle waves-effect w-100 rounded text-dark border border-dark"  id="theme" data-toggle="dropdown" href="#" role="button"
+            aria-haspopup="false" aria-expanded="false">
+            <i class="fas fa-palette"></i>&nbsp;&nbsp;
+            Cambiar tema&nbsp;
+            <i class="mdi mdi-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu" id="options-theme">
+            <a href="javascript:void(0);" class="dropdown-item" onclick="changeTheme('theme-default.css')">
+              <span>Tema por Defecto</span>
+            </a>
+            <a href="javascript:void(0);" class="dropdown-item" onclick="changeTheme('theme-dark.css')">
+              <span>Tema Oscuro</span>
+            </a>
+            <a href="javascript:void(0);" class="dropdown-item" onclick="changeTheme('theme-light.css')">
+              <span>Tema Claro</span>
+            </a>
+            <a href="javascript:void(0);" class="dropdown-item" onclick="changeTheme('theme-blue.css')">
+              <span>Tema Azul</span>
+            </a>
+            <a href="javascript:void(0);" class="dropdown-item" onclick="changeTheme('theme-green.css')">
+              <span>Tema Verde</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- end slimscroll-menu-->
+</div>
+<!-- /Right-bar -->

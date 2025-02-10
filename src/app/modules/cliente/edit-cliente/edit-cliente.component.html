@@ -1,0 +1,150 @@
+<div class="container-fluid">
+  <app-page-header
+    [title]="data.title"
+    [subtitle]="data.subtitle"
+    [name]="data.name"
+  ></app-page-header>
+
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="card-box">
+        <div class="form-group px-4 pt-2">
+          <i class="fas fa-pencil-alt fa-2x"></i>
+          <h3 class="fs-1 d-inline-block ml-1">Editar cliente</h3>
+        </div>
+
+        <form
+          class="px-4 pt-2 pb-2"
+          [formGroup]="clienteForm"
+          (ngSubmit)="actualizarCliente()"
+        >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nombre" class="control-label">Nombre</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  formControlName="nombre"
+                  class="form-control"
+                  placeholder="Ej: John"
+                />
+                <span
+                  *ngIf="isValidField('nombre')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("nombre") }}
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="apellido" class="control-label">Apellido</label>
+                <input
+                  type="text"
+                  id="apellido"
+                  formControlName="apellido"
+                  class="form-control"
+                  id="apellido"
+                  name="apellido"
+                  placeholder="Ej: Doe"
+                />
+                <span
+                  *ngIf="isValidField('apellido')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("apellido") }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="email" class="control-label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Ej: jhondoe@gmail.com"
+                />
+                <span
+                  *ngIf="isValidField('email')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("email") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="telefono" class="control-label"
+                  >Número telefónico</label
+                >
+                <input
+                  type="number"
+                  min="0"
+                  id="telefono"
+                  formControlName="telefono"
+                  class="form-control"
+                  placeholder="Ej: 77664412"
+                />
+                <span
+                  *ngIf="isValidField('telefono')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("telefono") }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label">Género</label>
+                <div class="custom-control custom-radio">
+                  <input type="radio" value="F" formControlName="genero"
+                  class="custom-control-input" id="femenino">
+                  <label for="femenino" class="custom-control-label"
+                    >Femenino</label
+                  >
+                </div>
+                <div class="custom-control custom-radio mt-1">
+                  <input type="radio" value="M" formControlName="genero"
+                  class="custom-control-input" id="masculino">
+                  <label for="masculino" class="custom-control-label"
+                    >Masculino</label
+                  >
+                </div>
+              </div>
+              <span
+                  *ngIf="isValidField('genero')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("genero") }}
+                </span>
+            </div>
+          </div>
+
+          <div class="form-group text-right m-b-0">
+            <button
+              type="button"
+              (click)="goToClienteList()"
+              class="btn btn-danger waves-effect mr-1"
+            >
+              Cancelar
+            </button>
+            <button
+              class="btn btn-primary waves-effect waves-light"
+              type="submit"
+            >
+              Actualizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

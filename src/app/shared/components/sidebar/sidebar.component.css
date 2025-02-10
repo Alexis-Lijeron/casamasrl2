@@ -1,0 +1,21 @@
+/* .slimscroll-menu { */
+  .nav-second-level {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+  }
+
+  .nav-second-level.show {
+    display: block; 
+  }
+  
+  .menu-arrow {
+    float: right;
+    transition: transform 0.3s;
+  }
+
+  .menu-arrow.open {
+    transform: rotate(90deg);
+  }
+
+/* } */

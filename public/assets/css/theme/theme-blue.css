@@ -1,0 +1,167 @@
+/* body {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+.navbar-custom {
+  background-color: #1976d2;
+}
+.card {
+  background-color: #ffffff;
+  border-color: #90caf9;
+} */
+ 
+
+:root {
+  --color1: #e3f2fd;
+  --color2: #4d47e4;
+  --color3: #3f37c9;
+  --color4: #c7d3fe;
+  --color5: #5d6673;
+  
+  --color6: #3f37c9;
+  
+  --color7: #0d47a1;
+  --color8: #bfd7ff;
+  --color9: #f7f7f7;
+  --color10: #ced4da;
+  --color11: #4361ee;
+  --color12: #e1e9ee;
+  --color13: #919dff;
+  
+  --color14: #4e5864;
+  --color15: #bfd7ff;
+  --color16: #097ec0;
+}
+
+body {
+  background-color: var(--color1);
+  color: var(--color7);
+}
+
+.dropdown-menu, .left-side-menu {
+  box-shadow: none;
+}
+.navbar-custom .button-menu-mobile span {
+  background-color: var(--color8);
+}
+.navbar-custom .topnav-menu .nav-link, .table, .table-hover tbody tr:hover {
+  color: var(--color8);
+}
+
+.notification-list .notify-item .notify-details {
+  color: var(--color9);
+}
+.dropdown-item.active, .dropdown-item:active {
+  /* color: var(--color10); */
+  background-color: var(--color3);
+}
+
+.dropdown-item:hover {
+  color: var(--color12);
+  background-color: var(--color3);
+}
+.notification-list .noti-title, .dropdown-menu {
+  background-color: var(--color2);
+}
+
+.page-title-box .page-title, .breadcrumb-item>a {
+  color: var(--color7);
+}
+.breadcrumb-item.active {
+  color: var(--color16);
+}
+.breadcrumb-item+.breadcrumb-item::before {
+  color: var(--color5);
+}
+.dropdown-item {
+  color: var(--color9);
+}
+
+.form-control, .form-control:focus {
+  background-color: var(--color1);
+  border-color: var(--color16);
+  color: var(--color7);
+}
+
+.card-box .form-group h3, .card-box .form-group i {
+  color: var(--color7);
+}
+
+.table th {
+  background-color: var(--color6);
+  color: var(--color8);
+}
+.table td {
+  color: var(--color7);
+}
+.table-hover tbody tr:hover {
+  background-color: var(--color1);
+}
+
+.page-item .page-link {
+  /* color: var(--color8); */
+  /* background-color: var(--color2); */
+  border: 1px solid var(--color14);
+}
+
+.page-item.disabled .page-link {
+  color: var(--color7);
+  background-color: var(--color12);
+  border: 1px solid var(--color14);
+}
+.navbar-custom .app-search .form-control, .navbar-custom .app-search .btn {
+  background-color: var(--color8);
+  color: var(--color7);
+}
+input#search-input.form-control {
+  background-color: var(--color8);
+  color: var(--color7);
+}
+input#search-input.form-control::placeholder {
+  color: var(--color7);
+}
+
+.navbar-custom {
+  background-color: var(--color6);
+}
+.card-box {
+  background-color: var(--color8);
+}
+.text-right h3, .text-right h3 span {
+  color: var(--color11) !important;
+}
+.footer, .footer .footer-links a {
+  background-color: var(--color15);
+  color: var(--color7);
+}
+
+
+.left-side-menu, .logo-box {
+  background-color: var(--color6);
+}
+#sidebar-menu>ul>li>a.active {
+  color: var(--color1);
+}
+#sidebar-menu>ul>li>a, .nav-second-level li a, .nav-thrid-level li a {
+  color: var(--color13);
+}
+
+
+.right-bar .rightbar-title {
+  background-color: var(--color6) !important;
+  color: var(--color8);
+}
+.right-bar {
+  background-color: var(--color15);
+}
+
+.right-bar .user-box h5 a, .right-bar .user-box p {
+  color: var(--color7) !important;
+}
+
+#theme {
+  color: var(--color7) !important;
+  border: 1px solid var(--color7) !important;
+}
+
+

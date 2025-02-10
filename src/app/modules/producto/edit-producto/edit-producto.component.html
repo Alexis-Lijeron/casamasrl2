@@ -1,0 +1,325 @@
+<div class="container-fluid">
+  <app-page-header
+    [title]="data.title"
+    [subtitle]="data.subtitle"
+    [name]="data.name"
+  ></app-page-header>
+
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="card-box">
+        <div class="form-group px-4 pt-2">
+          <i class="fas fa-pencil-alt fa-2x"></i>
+          <h3 class="fs-1 d-inline-block ml-1">Editar producto</h3>
+        </div>
+
+        <form
+          [formGroup]="productoForm"
+          (ngSubmit)="actualizarProducto()"
+          enctype="multipart/form-data"
+          class="px-4 pt-2 pb-2"
+        >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nombre" class="control-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  formControlName="nombre"
+                  placeholder="Ej: Paracetamol"
+                />
+                <span
+                  *ngIf="isValidField('nombre')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("nombre") }}
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="categoria_id" class="control-label"
+                  >Categoría</label
+                >
+                <select
+                  class="form-control"
+                  formControlName="categoria_id"
+                  id="categoria_id"
+                >
+                  <option value="">Seleccionar</option>
+                  @for (categoria of categorias; track $index) {
+                  <option [value]="categoria.id">
+                    {{ categoria.nombre }}
+                  </option>
+                  }
+                </select>
+                <span
+                  *ngIf="isValidField('categoria_id')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("categoria_id") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="laboratorio_id" class="control-label"
+                  >Laboratorio</label
+                >
+                <select
+                  class="form-control"
+                  formControlName="laboratorio_id"
+                  id="laboratorio_id"
+                >
+                  <option value="">Seleccionar</option>
+                  @for (laboratorio of laboratorios; track $index) {
+                  <option [value]="laboratorio.id">
+                    {{ laboratorio.nombre }}
+                  </option>
+                  }
+                </select>
+                <span
+                  *ngIf="isValidField('laboratorio_id')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("laboratorio_id") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="stock_minimo" class="control-label"
+                  >Stock mínimo</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="stock_minimo"
+                  formControlName="stock_minimo"
+                  placeholder="Ej: 10"
+                />
+                <span
+                  *ngIf="isValidField('stock_minimo')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("stock_minimo") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Precio de venta</label>
+                <div class="input-group mt-0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Bs</span>
+                  </div>
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="Ej: 150,5"
+                    aria-label="Amount (to the nearest dollar)"
+                    formControlName="precio_venta"
+                    id="precio_venta"
+                    step="0.01"
+                  />
+                </div>
+                <span
+                  *ngIf="isValidField('precio_venta')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("precio_venta") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="via_administracion">Vía de Administración</label>
+                <select
+                  class="form-control"
+                  formControlName="via_administracion"
+                >
+                  <option value="">Seleccionar</option>
+                  <option value="Oral">Oral</option>
+                  <option value="Intravenosa">Intravenosa</option>
+                  <option value="Intramuscular">Intramuscular</option>
+                  <option value="Subcutánea">Subcutánea</option>
+                  <option value="Tópica">Tópica</option>
+                  <option value="Inhalación">Inhalación</option>
+                  <option value="otro">Otro (especificar)</option>
+                </select>
+              </div>
+
+              <div class="form-group" *ngIf="mostrarOtraVia">
+                <label for="otra_via_administracion"
+                  >Especificar otra vía</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="otra_via_administracion"
+                  placeholder="Especifique otra vía"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="descripcion" class="control-label"
+                  >Descripción</label
+                >
+                <textarea
+                  class="form-control"
+                  formControlName="descripcion"
+                  id="descripcion"
+                  rows="2"
+                  placeholder="Introduzca la descripción"
+                ></textarea>
+                <span
+                  *ngIf="isValidField('descripcion')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("descripcion") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="contraindicaciones" class="control-label"
+                  >Contraindicaciones</label
+                >
+                <textarea
+                  class="form-control"
+                  formControlName="contraindicaciones"
+                  id="contraindicaciones"
+                  rows="2"
+                  placeholder="Ej: Hipersensibilidad al medicamento"
+                ></textarea>
+                <span
+                  *ngIf="isValidField('contraindicaciones')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("contraindicaciones") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="principio_activo" class="control-label"
+                  >Principio Activo</label
+                >
+                <textarea
+                  class="form-control"
+                  formControlName="principio_activo"
+                  id="principio_activo"
+                  rows="2"
+                  placeholder="Ej: Gentamicina 100 Mg, Miconazol 2 G, Betametasona 100 Mg"
+                ></textarea>
+                <span
+                  *ngIf="isValidField('principio_activo')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("principio_activo") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="accion_terapeutica" class="control-label"
+                  >Acción Terapéutica</label
+                >
+                <textarea
+                  class="form-control"
+                  formControlName="accion_terapeutica"
+                  id="accion_terapeutica"
+                  rows="2"
+                  placeholder="Ej: Analgésico"
+                ></textarea>
+                <span
+                  *ngIf="isValidField('accion_terapeutica')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("accion_terapeutica") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="efectos_secundarios" class="control-label"
+                  >Efectos Secundarios</label
+                >
+                <textarea
+                  class="form-control"
+                  formControlName="efectos_secundarios"
+                  id="efectos_secundarios"
+                  rows="2"
+                  placeholder="Ej: Náuseas, mareos"
+                ></textarea>
+                <span
+                  *ngIf="isValidField('efectos_secundarios')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("stock_minimo") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="imagen">Seleccionar Imagen</label>
+                <input
+                  type="file"
+                  class="form-control-file"
+                  (change)="onFileSelected($event)"
+                />
+              </div>
+              <div class="form-group">
+                <img
+                  *ngIf="selectedImage"
+                  [src]="selectedImage"
+                  alt="Previsualización"
+                  style="max-width: 200px; margin-top: 10px"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group text-right m-b-0">
+            <button
+              type="button"
+              (click)="goToProductoList()"
+              class="btn btn-danger waves-effect mr-1"
+            >
+              Cancelar
+            </button>
+            <button
+              class="btn btn-primary waves-effect waves-light"
+              type="submit"
+            >
+              Actualizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

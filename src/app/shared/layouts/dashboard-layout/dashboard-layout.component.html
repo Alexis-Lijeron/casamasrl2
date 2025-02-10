@@ -1,0 +1,24 @@
+<div id="wrapper">
+  <app-navbar></app-navbar>
+  <!-- Escucha el evento -->
+
+  <!-- ========== Left Sidebar Start ========== -->
+  <div class="left-side-menu">
+    <app-sidebar></app-sidebar>
+    <!-- Envía el estado -->
+  </div>
+
+  <!-- ========== Start Page Content here ========== -->
+  <div class="content-page">
+    <div id="content">
+      <div class="content">
+        <div class="container-fluid">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+
+    <app-right-bar></app-right-bar>
+    <app-footer></app-footer>
+  </div>
+</div>

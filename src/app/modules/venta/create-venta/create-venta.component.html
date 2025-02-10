@@ -1,0 +1,197 @@
+<div class="container-fluid">
+  <app-page-header
+    [title]="data.title"
+    [subtitle]="data.subtitle"
+    [name]="data.name"
+  ></app-page-header>
+
+  <div class="row mb-5">
+    <div class="col-lg-12">
+      <div class="card-box">
+        <div class="form-group px-4 pt-2">
+          <i class="fas fa-plus-circle fa-2x"></i>
+          <h3 class="fs-1 d-inline-block ml-1">Registrar venta</h3>
+        </div>
+
+        <!-- Formulario -->
+        <form
+          [formGroup]="ventaForm"
+          (ngSubmit)="guardarVenta()"
+          class="px-4 pt-2 pb-2"
+        >
+          <div class="row">
+            <div class="col-lg-8">
+              <!-- Selección de Producto -->
+              <div class="form-row align-items-end">
+                <div class="form-group col-lg-4">
+                  <label for="producto_id">Producto</label>
+                  <select
+                    class="form-control"
+                    (change)="onProductoChange($event)"
+                  >
+                    <option value="">Seleccione un producto</option>
+                    <option
+                      *ngFor="let producto of productosDisponibles"
+                      [value]="producto.id"
+                    >
+                      {{ producto.nombre }}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group col-lg-3">
+                  <label for="cantidad">Cantidad</label>
+                  <input
+                    type="number"
+                    formControlName="cantidad"
+                    id="cantidad"
+                    class="form-control"
+                    min="1"
+                  />
+                </div>
+
+                <div class="form-group col-lg-3">
+                  <label for="precio_venta">Precio Unitario</label>
+                  <input
+                    type="number"
+                    id="precio_venta"
+                    class="form-control"
+                    min="0"
+                    style="background-color: white"
+                    placeholder="0"
+                    step="0.01"
+                    readonly
+                    [value]="selectedPrecio"
+                  />
+                </div>
+
+                <div class="form-group col-lg-2">
+                  <button
+                    type="button"
+                    class="btn btn-success btn-block"
+                    (click)="agregarProducto()"
+                  >
+                    Agregar
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-row align-items-end mt-2">
+                <div class="form-group col-lg-12">
+                  <h3 class="mb-3">Productos Agregados</h3>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead class="bg-dark text-white">
+                        <tr>
+                          <th class="text-center">Producto</th>
+                          <th class="text-center">Cantidad</th>
+                          <th class="text-center">Precio Unitario</th>
+                          <th class="text-center">Subtotal</th>
+                          <th class="text-center">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let producto of productos; let i = index">
+                          <td class="text-center">
+                            {{ producto.productoNombre }}
+                          </td>
+                          <td class="text-center">
+                            <button
+                              class="btn btn-sm btn-outline-danger me-2"
+                              (click)="disminuirCantidad(i)"
+                            >
+                              <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="mx-3">{{ producto.cantidad }}</span>
+                            <button
+                              class="btn btn-sm btn-outline-success ms-2"
+                              (click)="aumentarCantidad(i)"
+                            >
+                              <i class="fas fa-plus"></i>
+                            </button>
+                          </td>
+                          <td class="text-center">
+                            {{ producto.precioUnitario.toFixed(2) }}
+                          </td>
+                          <td class="text-center">
+                            {{ producto.subtotal.toFixed(2) }}
+                          </td>
+                          <td class="text-center">
+                            <button
+                              class="btn btn-danger btn-sm"
+                              (click)="eliminarProducto(i)"
+                            >
+                              <i class="fas fa-trash-alt"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr *ngIf="productos.length === 0">
+                          <td colspan="5" class="text-center">
+                            No hay productos agregados.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Datos de la Venta -->
+            <div class="col-lg-4 bg-light rounded p-3">
+              <h3 class="text-center mb-3">Datos de la Venta</h3>
+
+              <div class="form-group">
+                <label for="fecha_venta">Fecha de Venta</label>
+                <input
+                  type="date"
+                  formControlName="fecha_venta"
+                  style="background-color: white"
+                  class="form-control"
+                  readonly
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="cliente_id">Cliente</label>
+                <select formControlName="cliente_id" class="form-control">
+                  <option value="">Seleccione un cliente</option>
+                  <option *ngFor="let cliente of clientes" [value]="cliente.id">
+                    {{ cliente.nombre }} {{ cliente.apellido }}
+                  </option>
+                </select>
+                <span
+                  *ngIf="isValidField('cliente_id')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("cliente_id") }}
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label for="total">Total</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  style="background-color: white"
+                  formControlName="monto_total"
+                  step="0.01"
+                  readonly
+                />
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-lg btn-primary btn-block">
+                  Guardar Venta
+                </button>
+                <button type="button" class="btn btn-lg btn-danger btn-block" (click)="goToVentaList()">
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

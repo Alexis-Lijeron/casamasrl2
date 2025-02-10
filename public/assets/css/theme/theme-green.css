@@ -1,0 +1,198 @@
+:root {
+    --color1: #f2fbf8;
+    --color6: #52b69a;
+    --color8: #f2fbf8;
+    --color7: #277a66;
+    --color16: #52b69a;
+    --color2: #d5f2e8;
+    --color3: #abe4d0;
+    --color4: #79cfb5;
+    --color9: #34987e;
+
+    --color5: #5d6673;
+
+    --color10: #ced4da;
+    --color11: #4361ee;
+    --color12: #e1e9ee;
+    --color13: #919dff;
+
+    --color14: #4e5864;
+    --color15: #bfd7ff;
+}
+
+body {
+    background-color: var(--color1);
+    color: var(--color7);
+}
+
+.dropdown-menu,
+.left-side-menu,
+.navbar-custom {
+    box-shadow: none;
+}
+.navbar-custom .button-menu-mobile span {
+    background-color: var(--color8);
+}
+.navbar-custom .topnav-menu .nav-link,
+.table,
+.table-hover tbody tr:hover {
+    color: var(--color8);
+}
+
+.notification-list .notify-item .user-msg {
+    color: var(--color7) !important;
+}
+.dropdown-item.active,
+.dropdown-item:active {
+    /* color: var(--color10); */
+    background-color: var(--color3);
+}
+
+.dropdown-item:hover {
+    color: var(--color9);
+    background-color: var(--color3);
+}
+.notification-list .noti-title,
+.notification-list .noti-title:hover {
+    background-color: var(--color4);
+}
+
+.dropdown-menu {
+    background-color: var(--color2);
+}
+
+.page-title-box .page-title,
+.breadcrumb-item > a {
+    color: var(--color7);
+}
+.breadcrumb-item.active {
+    color: var(--color16);
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--color5);
+}
+.dropdown-item {
+    color: var(--color9);
+}
+
+.form-control,
+.form-control:focus {
+    background-color: var(--color1);
+    border-color: var(--color16);
+    color: var(--color7);
+}
+
+.card-box .form-group h3,
+.card-box .form-group i {
+    color: var(--color7);
+}
+
+.table th {
+    background-color: var(--color6);
+    color: var(--color8);
+}
+.table td {
+    color: var(--color7);
+}
+.table-hover tbody tr:hover {
+    background-color: var(--color1);
+}
+
+.page-item .page-link {
+    color: var(--color1);
+    background-color: var(--color16);
+    border: 1px solid var(--color4);
+}
+
+.page-item.active .page-link {
+    color: var(--color7);
+    background-color: var(--color1);
+    border: 1px solid var(--color4);
+}
+
+.page-item.disabled .page-link {
+    color: var(--color3);
+    background-color: var(--color6);
+    border: 1px solid var(--color4);
+}
+.navbar-custom .app-search .form-control,
+.navbar-custom .app-search .btn {
+    background-color: var(--color8);
+    color: var(--color7);
+}
+input#search-input.form-control {
+    background-color: var(--color8);
+    color: var(--color7);
+}
+input#search-input.form-control::placeholder {
+    color: var(--color7);
+}
+
+.navbar-custom {
+    background-color: var(--color6);
+}
+.card-box {
+    background-color: var(--color2);
+}
+.text-right p,
+.text-right p span {
+    color: var(--color7) !important;
+}
+.footer,
+.footer .footer-links a {
+    background-color: var(--color2);
+    color: var(--color7);
+}
+
+.left-side-menu,
+.logo-box {
+    background-color: var(--color6);
+}
+#sidebar-menu > ul > li > a.active,
+#sidebar-menu > ul > li > a:focus,
+#sidebar-menu > ul > li > a:hover {
+    color: var(--color1);
+    font-weight: 600;
+}
+#sidebar-menu > ul > li > a,
+.nav-second-level li a,
+.nav-thrid-level li a {
+    color: var(--color3);
+}
+.nav-second-level li a:focus,
+.nav-second-level li a:hover,
+.nav-thrid-level li a:focus,
+.nav-thrid-level li a:hover {
+    color: var(--color2);
+}
+
+.nav-second-level li.active>a, .nav-third-level li.active>a {
+    color: var(--color2);
+    font-weight: 600;
+}
+
+
+.right-bar .rightbar-title {
+  background-color: var(--color6) !important;
+  color: var(--color8);
+}
+.right-bar {
+  background-color: var(--color2);
+}
+
+.right-bar .user-box h5 a, .right-bar .user-box p {
+  color: var(--color7) !important;
+}
+
+#theme {
+  color: var(--color7) !important;
+  border: 1px solid var(--color7) !important;
+}
+#options-theme {
+  background-color: var(--color3);
+}
+#options-theme .dropdown-item:hover {
+  background-color: var(--color4);
+  color: var(--color8);
+}
+

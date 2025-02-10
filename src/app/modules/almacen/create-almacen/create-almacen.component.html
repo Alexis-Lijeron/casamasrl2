@@ -1,0 +1,142 @@
+<div class="container-fluid">
+  <app-page-header
+    [title]="data.title"
+    [subtitle]="data.subtitle"
+    [name]="data.name"
+  ></app-page-header>
+
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="card-box">
+        <div class="form-group px-4 pt-2">
+          <i class="fas fa-plus-circle fa-2x"></i>
+          <h3 class="fs-1 d-inline-block ml-1">Crear nuevo almacen</h3>
+        </div>
+
+        <div class="row">
+          <form
+            class="px-4 pt-2 pb-2 col-md-6"
+            [formGroup]="almacenForm"
+            (ngSubmit)="guardarAlmacen()"
+          >
+            <div class="form-group">
+              <label for="nombre" class="control-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                formControlName="nombre"
+                placeholder="Introduzca el nombre del almacen"
+              />
+              <span
+                *ngIf="isValidField('nombre')"
+                class="form-text text-danger"
+              >
+                * {{ getMessageError("nombre") }}
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label for="descripcion" class="control-label">Descripción</label>
+              <textarea
+                class="form-control"
+                id="descripcion"
+                formControlName="descripcion"
+                placeholder="Introduzca la descripción"
+                rows="3"
+              ></textarea>
+              <span
+                *ngIf="isValidField('descripcion')"
+                class="form-text text-danger"
+              >
+                * {{ getMessageError("descripcion") }}
+              </span>
+            </div>
+
+            <div class="form-group m-b-0">
+              <button
+                type="button"
+                (click)="goToAlmacenList()"
+                class="btn btn-danger waves-effect mr-1"
+              >
+                Cancelar
+              </button>
+              <button
+                class="btn btn-primary waves-effect waves-light"
+                type="submit"
+              >
+                Guardar
+              </button>
+            </div>
+          </form>
+
+          <div class="col-md-6 bg-light rounded p-3">
+            <div class="form-row align-items-end">
+              <div class="form-group col-md-8">
+                <label for="producto_id">Producto</label>
+                <select
+                  id="producto_id"
+                  [(ngModel)]="selectedProductoId"
+                  name="producto"
+                  class="form-control"
+                >
+                  <option value="0">Seleccione un producto</option>
+                  @for (producto of productosDisponibles; track $index) {
+                  <option [value]="producto.id">
+                    {{ producto.nombre }}
+                  </option>
+                  }
+                </select>
+              </div>
+
+              <div class="form-group col-md-4">
+                <button
+                  type="button"
+                  class="btn btn-success btn-block"
+                  id="agregar-producto"
+                  (click)="agregarProducto()"
+                >
+                  Agregar
+                </button>
+              </div>
+            </div>
+
+            <div class="form-row align-items-end">
+              <!-- Tabla de Productos Agregados -->
+              <div class="form-group col-md-12">
+                <label class="mb-2">Productos agregados</label>
+                <table class="table table-bordered">
+                  <thead class="bg-dark text-white">
+                    <tr>
+                      <th class="text-center">Producto</th>
+                      <th class="text-center">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white" id="productos-table-body">
+                    <tr *ngFor="let producto of productos; let i = index">
+                      <td class="text-center">
+                        {{ producto.productoNombre }}
+                      </td>
+                      <td class="text-center">
+                        <button
+                          type="button"
+                          class="btn btn-danger btn-sm"
+                          (click)="eliminarProducto(i)"
+                        >
+                          <i class="fas fa-trash-alt"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr *ngIf="productos.length === 0" class="text-center">
+                      <td colspan="3">No hay productos agregados.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

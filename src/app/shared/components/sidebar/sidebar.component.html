@@ -1,0 +1,156 @@
+<div class="slimscroll-menu">
+
+  <!--- Sidemenu -->
+  <div id="sidebar-menu">
+
+      <ul class="metismenu" id="side-menu">
+
+          <li>
+              <a href="#">
+                  <i class="fas fa-home"></i>
+                  <span> Dashboard </span>
+              </a>
+          </li>
+          
+          <li>
+              <a routerLink="/dashboard/usuario/list" routerLinkActive="active" >
+                  <i class="fas fa-user-cog"></i>
+                  <span> Usuarios </span>
+              </a>
+          </li>
+          
+          <li>
+              <a href="javascript: void(0);" (click)="toggleSubmenu('roles')">
+                  <i class="fas fa-key"></i>
+                  <span> Roles y Permisos </span>
+                  <span class="menu-arrow"></span>
+              </a>
+              <ul class="nav-second-level" [class.show]="openSubmenu === 'roles'">
+                  <li>
+                      <a routerLink="/dashboard/rol/list" routerLinkActive="active">Roles</a>
+                  </li>
+                  <li>
+                      <a routerLink="/dashboard/permiso/list" routerLinkActive="active">Permisos</a>
+                  </li>
+                  <li>
+                      <a href="#">Asignar Permisos a Roles</a>
+                  </li>
+                  <li>
+                      <a href="#">Asignar Roles a Usuarios</a>
+                  </li>
+              </ul>
+          </li>
+
+          <li>
+              <a routerLink="/dashboard/cliente/list" routerLinkActive="active">
+                  <i class="fas fa-users"></i>
+                  <span> Clientes </span>
+              </a>
+          </li>
+
+
+          <li>
+              <a href="javascript: void(0);" (click)="toggleSubmenu('productos')">
+                  <i class="fas fa-boxes"></i>
+                  <span> Productos </span>
+                  <span class="menu-arrow"></span>
+              </a>
+              <ul class="nav-second-level" [class.show]="openSubmenu === 'productos'">
+                  <li>
+                      <a routerLink="/dashboard/producto/list" routerLinkActive="active">Productos</a>
+                  </li>
+                  <li>
+                      <a routerLink="/dashboard/categoria/list" routerLinkActive="active">Categorías</a>
+                  </li>
+                  <li>
+                      <a routerLink="/dashboard/laboratorio/list" routerLinkActive="active">Laboratorios</a>
+                  </li>
+                  <li>
+                      <a routerLink="/dashboard/almacen/list" routerLinkActive="active">Almacenes</a>
+                  </li>
+              </ul>
+          </li>
+          
+          <li>
+              <a routerLink="/dashboard/ajuste-inventario/list" routerLinkActive="active">
+                  <i class="fas fa-layer-group"></i>
+                  <span> Ajuste Inventario </span>
+              </a>
+          </li>
+
+          <li>
+              <a href="#">
+                  <i class="fas fas fa-truck"></i>
+                  <span> Proveedores </span>
+              </a>
+          </li>
+
+          <li>
+              <a href="javascript: void(0);" (click)="toggleSubmenu('compras')">
+                  <i class="fas fa-shopping-bag"></i>
+                  <span> Compras </span>
+                  <span class="menu-arrow"></span>
+              </a>
+              <ul class="nav-second-level" [class.show]="openSubmenu === 'compras'">
+                  <li>
+                      <a href="#">Compras</a>
+                  </li>
+                  <li>
+                      <a href="#">Devoluciones</a>
+                  </li>
+              </ul>
+          </li>
+
+          <li>
+              <a routerLink="/dashboard/venta/list" routerLinkActive="active">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span> Ventas </span>
+              </a>
+          </li>
+
+          <li>
+              <a href="javascript: void(0);" (click)="toggleSubmenu('pagos')">
+                  <i class="fas fa-donate"></i>
+                  <span> Pagos </span>
+                  <span class="menu-arrow"></span>
+              </a>
+              <ul class="nav-second-level" [class.show]="openSubmenu === 'pagos'">
+                  <li>
+                      <a href="#">Pagos</a>
+                  </li>
+                  <li>
+                      <a href="#">Metodos de pago</a>
+                  </li>
+              </ul>
+          </li>
+
+          <li>
+              <a href="javascript: void(0);" (click)="toggleSubmenu('reportes')">
+                  <i class="fas fa-file-alt"></i>
+                  <span> Reportes </span>
+                  <span class="menu-arrow"></span>
+              </a>
+              <ul class="nav-second-level" [class.show]="openSubmenu === 'reportes'">
+                  <li>
+                      <a href="#">Reporte de Ventas</a>
+                  </li>
+                  <li>
+                      <a href="#">Reporte de Compras</a>
+                  </li>
+                  <li>
+                      <a href="#">Reporte de Pagos</a>
+                  </li>
+              </ul>
+          </li>
+
+
+      </ul>
+
+
+  </div>
+  <!-- End Sidebar -->
+
+  <div class="clearfix"></div>
+
+</div>
+<!-- Sidebar -left -->

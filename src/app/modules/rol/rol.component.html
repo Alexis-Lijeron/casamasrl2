@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <app-page-header
+    [title]="data.title"
+    [subtitle]="data.subtitle"
+    [name]="data.name"
+  ></app-page-header>
+
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="mb-2 d-flex justify-content-between">
+        <div class="form-group">
+          <button
+            (click)="goToCreateRol()"
+            class="btn btn-primary waves-effect waves-light"
+          >
+            <i class="fas fa-plus-circle"></i>&nbsp; Nuevo Rol
+          </button>
+        </div>
+      </div>
+
+      <div class="card-box">
+        <div class="table-responsive">
+          <table
+            id="table-roles"
+            class="table table-hover mb-0 dts"
+            datatable
+            [dtOptions]="dtOptions"
+          >
+            <thead class="bg-dark text-center text-white text-nowrap">
+              <tr style="cursor: pointer">
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (rol of roles; track $index) {
+              <tr class="text-nowrap text-center">
+                <th scope="row" class="align-middle">{{ rol.id }}</th>
+                <td class="align-middle">{{ rol.nombre }}</td>
+                <td class="align-middle text-nowrap" style="width: 150px">
+                  <div class="d-flex justify-content-center">
+                    <button
+                      href="#"
+                      title="Editar"
+                      class="btn btn-sm btn-primary mr-1"
+                      (click)="goToEditRol(rol.id)"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+
+                    <button
+                      type="button"
+                      title="Eliminar"
+                      class="btn btn-sm btn-danger"
+                      (click)="confirmarEliminarRol(rol.id)"
+                    >
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

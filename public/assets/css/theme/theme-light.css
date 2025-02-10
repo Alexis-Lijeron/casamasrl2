@@ -1,0 +1,65 @@
+:root {
+  --color1: #323A46;
+  --color2: #434b56;
+  --color3: #4a535f;
+  --color4: #56606e;
+  --color5: #5d6673;
+  
+  --color6: #3B434E;
+  
+  --color7: #adb5bd;
+  --color8: #DCDFE3;
+  --color9: #f7f7f7;
+  --color10: #ced4da;
+  --color11: #dee2e6;
+  --color12: #e1e9ee;
+  --color13: #F0F4F6;
+  
+  --color14: #4e5864;
+  --color15: #434C58;
+  --color16: #2F3642;
+}
+
+.dropdown-menu, .left-side-menu, .navbar-custom {
+  box-shadow: none;
+}
+
+thead th {
+  background-color: var(--color13) !important;
+  color: var(--color5);
+}
+
+.left-side-menu, .logo-box {
+  background-color: var(--color13)
+}
+#sidebar-menu>ul>li>a.active {
+  color: var(--color16);
+  font-weight: 800;
+}
+#sidebar-menu>ul>li>a, .nav-second-level li a, .nav-thrid-level li a {
+  color: var(--color5);
+}
+#sidebar-menu>ul>li>a:hover, .nav-second-level li a:hover, .nav-thrid-level li a:hover {
+  color: var(--color16);
+  font-weight: 500;
+}
+.nav-second-level li.active>a, .nav-third-level li.active>a {
+  color: var(--color5);
+  font-weight: 800;
+}
+.right-bar .rightbar-title {
+  background-color: var(--color13) !important;
+}
+
+.right-bar .rightbar-title h5 {
+  color: var(--color6) !important;
+}
+#options-theme {
+  background-color: var(--color9);
+  color: var(--color6);
+}
+#options-theme .dropdown-item:hover {
+  background-color: var(--color8);
+  color: var(--color6);
+}
+

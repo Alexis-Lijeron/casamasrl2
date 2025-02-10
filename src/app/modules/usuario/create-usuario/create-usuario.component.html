@@ -1,0 +1,142 @@
+<div class="container-fluid">
+  <app-page-header
+    [title]="data.title"
+    [subtitle]="data.subtitle"
+    [name]="data.name"
+  ></app-page-header>
+
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="card-box">
+        <div class="form-group px-4 pt-2">
+          <i class="fas fa-user-plus fa-2x"></i>
+          <h3 class="fs-1 d-inline-block ml-1">Crear nuevo usuario</h3>
+        </div>
+
+        <form
+          class="px-4 pt-2 pb-2"
+          [formGroup]="usuarioForm"
+          (ngSubmit)="guardarUsuario()"
+        >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="fullname" class="control-label">Nombre Completo</label>
+                <input
+                  type="text"
+                  id="fullname"
+                  formControlName="fullname"
+                  class="form-control"
+                  placeholder="Ej: John"
+                />
+                <span
+                  *ngIf="isValidField('fullname')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("fullname") }}
+                </span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="username" class="control-label">Usuario</label>
+                <input
+                  type="text"
+                  formControlName="username"
+                  class="form-control"
+                  id="username"
+                  placeholder="Ej: Doe"
+                />
+                <span
+                  *ngIf="isValidField('username')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("username") }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="email" class="control-label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Ej: jhondoe@gmail.com"
+                />
+                <span
+                  *ngIf="isValidField('email')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("email") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="telefono" class="control-label"
+                  >Número telefónico</label
+                >
+                <input
+                  type="number"
+                  min="0"
+                  id="telefono"
+                  formControlName="telefono"
+                  class="form-control"
+                  placeholder="Ej: 77664412"
+                />
+                <span
+                  *ngIf="isValidField('telefono')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("telefono") }}
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="password" class="control-label">Contraseña</label>
+                <input
+                  type="text"
+                  id="password"
+                  formControlName="password"
+                  class="form-control"
+                  placeholder="Ej: ********"
+                />
+                <span
+                  *ngIf="isValidField('password')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("password") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group text-right m-b-0">
+            <button
+              type="button"
+              (click)="goToUsuarioList()"
+              class="btn btn-danger waves-effect mr-1"
+            >
+              Cancelar
+            </button>
+            <button
+              class="btn btn-primary waves-effect waves-light"
+              type="submit"
+            >
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

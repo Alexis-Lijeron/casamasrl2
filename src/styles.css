@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+button.dt-paging-button.first,  button.dt-paging-button.last {
+  display: none !important;
+}
+
+table.dataTable thead th, table.dataTable tbody th {
+  text-align: center !important; 
+}
+
+table.dataTable th.dt-type-numeric, table.dataTable th.dt-type-date, table.dataTable td.dt-type-numeric, table.dataTable td.dt-type-date {
+  text-align: center !important; 
+}

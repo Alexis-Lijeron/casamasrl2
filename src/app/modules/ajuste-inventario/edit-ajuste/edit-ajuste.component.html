@@ -1,0 +1,214 @@
+<div class="container-fluid">
+  <app-page-header
+    [title]="data.title"
+    [subtitle]="data.subtitle"
+    [name]="data.name"
+  ></app-page-header>
+
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="card-box">
+        <div class="form-group px-4 pt-2">
+          <i class="fas fa-pencil-alt fa-2x"></i>
+          <h3 class="fs-1 d-inline-block ml-1">Editar Ajuste Inventario</h3>
+        </div>
+
+        <form
+          class="px-4 pt-2 pb-2"
+          [formGroup]="ajusteForm"
+          (ngSubmit)="actualizarAjuste()"
+        >
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input
+                  type="date"
+                  formControlName="fecha"
+                  style="background: white"
+                  id="fecha"
+                  class="form-control"
+                />
+                <span
+                  *ngIf="isValidField('fecha')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("fecha") }}
+                </span>
+              </div>
+              <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" formControlName="tipo" class="form-control">
+                  <option value="">Seleccione el tipo</option>
+                  <option value="Ingreso">Ingreso</option>
+                  <option value="Egreso">Egreso</option>
+                </select>
+                <span
+                  *ngIf="isValidField('tipo')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("tipo") }}
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-7">
+              <div class="form-group">
+                <label for="descripcion" class="control-label"
+                  >Descripción</label
+                >
+                <textarea
+                  class="form-control"
+                  formControlName="descripcion"
+                  id="descripcion"
+                  rows="5"
+                  placeholder="Introduzca la descripción"
+                ></textarea>
+                <span
+                  *ngIf="isValidField('descripcion')"
+                  class="form-text text-danger"
+                >
+                  * {{ getMessageError("descripcion") }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <hr
+            class="mt-3 mb-3"
+            style="height: 1px; background-color: #b4b4b4ff"
+          />
+
+          <h3 class="mb-3">Detalle del Ajuste</h3>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="almacen_id">Almacen</label>
+                <select class="form-control" (change)="onAlmacenChange($event)">
+                  <option value="">Seleccione un almacen</option>
+                  <option
+                    *ngFor="let almacen of almacenes"
+                    [value]="almacen.id"
+                  >
+                    {{ almacen.nombre }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="producto_id">Producto</label>
+                <select
+                  class="form-control"
+                  (change)="onProductoChange($event)"
+                >
+                  <option value="">Seleccione un producto</option>
+                  <option
+                    *ngFor="let producto of productosDisponibles"
+                    [value]="producto.producto_id"
+                  >
+                    {{ producto.producto_nombre }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="cantidad">Cantidad</label>
+                <input
+                  type="number"
+                  id="cantidad"
+                  class="form-control"
+                  value="1"
+                  (change)="onCantidadChange($event)"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-end">
+              <div class="form-group w-100">
+                <button
+                  (click)="agregarProducto()"
+                  type="button"
+                  class="btn btn-success btn-block w-100"
+                  id="agregar-producto"
+                >
+                  Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row align-items-end mt-2">
+            <!-- Tabla de Productos Agregados -->
+            <div class="form-group col-lg-12">
+              <h3 class="mb-3">Productos Agregados</h3>
+              <table class="table table-bordered">
+                <thead class="bg-dark text-white">
+                  <tr>
+                    <th class="text-center">ID producto</th>
+                    <th class="text-center">Producto</th>
+                    <th class="text-center">Almacen</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="productos-table-body">
+                  <tr *ngFor="let producto of productos; let i = index">
+                    <td class="text-center">{{ producto.productoId }}</td>
+                    <td class="text-center">{{ producto.productoNombre }}</td>
+                    <td class="text-center">{{ producto.almacenNombre }}</td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        (click)="disminuirCantidad(i)"
+                      >
+                        -
+                      </button>
+                      <span class="mx-3">{{ producto.cantidad }}</span>
+                      <button
+                        class="btn btn-sm btn-outline-success"
+                        (click)="aumentarCantidad(i)"
+                      >
+                        +
+                      </button>
+                    </td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-danger btn-sm"
+                        (click)="eliminarProducto(i)"
+                      >
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="productos.length === 0" class="text-center">
+                    <td colspan="5">No hay productos agregados.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="form-group text-right m-b-0">
+            <button
+              type="button"
+              (click)="goToAjusteList()"
+              class="btn btn-danger waves-effect mr-1"
+            >
+              Cancelar
+            </button>
+            <button
+              class="btn btn-primary waves-effect waves-light"
+              type="submit"
+            >
+              Actualizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
